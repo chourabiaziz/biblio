@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReaderController!
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Authors Index! ✅</h1>
+<table border="5" style="width: 100%;">
+    <thead>
+        <th>#</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Nb_books</th>
+        <th colspan="2">Action</th>
+    </thead>
+    <tbody>
+
+        {% for x in authors %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.username}}</td>
+            <td>{{x.email}}</td>
+
+            <td>{{x.nbBooks}}</td>
+
+
+
+            <td>
+                <a style="color: blue;" href="/author/edit/{{x.id}}">EDIT</a>
+            </td>
+            <td>
+                <a style="color: red;" href="/author/delete/{{x.id}}">DELETE</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+<br><br>
+
+<a href="/new/user">
+    New user</a>
+
+
+
+{% endblock %}

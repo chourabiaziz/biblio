@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReaderController!
+{% endblock %}
+
+{% block body %}
+
+	<h1>Edit your   reader</h1>
+
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<input type="submit" value="Add">
+	{{ form_end(form) }}
+	<a href="/reader">Retour</a>
+
+{% endblock %}
