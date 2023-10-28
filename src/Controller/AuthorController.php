@@ -14,11 +14,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
     #[Route('/author', name: 'app_author')]
-    public function index( AuthorRepository $authorRepository, ManagerRegistry $registry): Response
+    public function index(Request $request , AuthorRepository $authorRepository, ManagerRegistry $registry): Response
     {
+        $id = $request->get('search');
+        $author = $authorRepository->findById($id);
+
+        $min = $request->get('min');;
+        $max = $request->get('max');
         
+
+
         return $this->render('author/index.html.twig', [
-            'authors' => $authorRepository->findAll(),
+            'authors' => $authorRepository->listAuthorByEmail(),
+            'author'=> $author,
+            'authors2'=>$authorRepository->findAuthorsByBookCountRange($min,$max),
+            'delete'=>$authorRepository->delete()
         ]);
     }
 

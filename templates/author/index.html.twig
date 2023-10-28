@@ -7,6 +7,21 @@
 
 
 <h1>Authors Index! ✅</h1>
+
+<form action="" method="get">
+    <label for="search">Search your Author By Ref</label>
+    <input id="search" name="search" type="search">
+    <input style="background-color: rgb(139, 186, 139);" type="submit" value="Search">
+</form>
+{% if author %}
+<p style="color: green;"> "your author you are searching for :"</p>
+<p style="color: green;"> <b> name :{{author.username}} ||| email:{{author.email}}||| number
+        books:{{author.nbBooks}} </b></p>
+
+
+{% endif %}
+
+
 <table border="5" style="width: 100%;">
     <thead>
         <th>#</th>
@@ -41,9 +56,22 @@
 </table>
 <br><br>
 
-<a href="/new/user">
+<a href="/author/new">
     New user</a>
 
 
+<h1>dql</h1>
+<h3>Authors where number books between max and min</h3>
+<form action="" method="get">
+    min <input type="number" name="min">
+    max <input type="number" name="max">
+    <input type="submit" value="Search">
+    <br>
+</form>
+{% for x in authors2 %}
+<p style="color: green;"> <b> - {{x.username}} have {{x.nbBooks}} books
+    </b> </p>
+
+{% endfor %}
 
 {% endblock %}
